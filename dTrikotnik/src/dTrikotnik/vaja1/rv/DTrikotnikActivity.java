@@ -26,15 +26,15 @@ public class DTrikotnikActivity extends AndroidApplication {
     {
     	super.onKeyDown(keyCode, event);
     	
-        if (keyCode == KeyEvent.KEYCODE_P) 
+        if (keyCode == KeyEvent.KEYCODE_N) 
         {
         	zvok.Pavza();
         }
-        if (keyCode == KeyEvent.KEYCODE_O) 
+        if (keyCode == KeyEvent.KEYCODE_B) 
         {
         	zvok.Predvajaj();
         }
-        if (keyCode == KeyEvent.KEYCODE_I) 
+        if (keyCode == KeyEvent.KEYCODE_M) 
         {
         	zvok.Stop();
         	Sound();
