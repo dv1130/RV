@@ -16,8 +16,7 @@ public class trikotnik implements ApplicationListener
         private OrthographicCamera camera;
         private float rotationSpeed;
         private int skupno = 0;
-        private float movementIncrement = 0.0005f;
-        //Github br8394
+        private float movementIncrement = 0.05f;
 
         @Override
         public void create() 
@@ -85,8 +84,8 @@ public class trikotnik implements ApplicationListener
         @Override
         public void render() 
         {
-        	handleInput();
 
+        	handleInput();
             skupno += 1;
             if (skupno > 500) {
                 movementIncrement = -movementIncrement;
@@ -94,8 +93,9 @@ public class trikotnik implements ApplicationListener
             }
             
             Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
-            camera.update();
             camera.apply(Gdx.gl10);
+            camera.update();
+
             
             for (Mesh face : mesh) 
             {
@@ -111,11 +111,11 @@ private void handleInput() {
 	        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
 	                camera.rotate(rotationSpeed, 0, 0, 1);
 	        }
-	        if(Gdx.input.isKeyPressed(Input.Keys.U)) {
-                camera.zoom += 0.02;
+	        if(Gdx.input.isKeyPressed(Input.Keys.A)) {
+	        	camera.translate(movementIncrement, movementIncrement,0);
 	        }
 	        if(Gdx.input.isKeyPressed(Input.Keys.D)) {
-                camera.zoom-=0.02;
+	        	camera.translate(movementIncrement, 0, movementIncrement);
 	        }
             if(Gdx.input.isKeyPressed(Input.Keys.LEFT))
             {
@@ -125,14 +125,6 @@ private void handleInput() {
 	        {
 	                camera.rotate(rotationSpeed, 0, 0, 1);
 	        }
-	        if(Gdx.input.isKeyPressed(Input.Keys.W)) 
-	        {
-                camera.rotate(rotationSpeed, 0, 1, 0);
-	        }
-	        if(Gdx.input.isKeyPressed(Input.Keys.S))
-	        {
-                camera.rotate(rotationSpeed, 0, -1, 0);
-	        }
 	        if(Gdx.input.isKeyPressed(Input.Keys.UP)) 
 	        {
                 camera.rotate(rotationSpeed, 1, 0, 0);
@@ -141,11 +133,11 @@ private void handleInput() {
 	        {
                 camera.rotate(-rotationSpeed, 1, 0, 0);
 	        }
-	        if(Gdx.input.isKeyPressed(Input.Keys.A))
+	        if(Gdx.input.isKeyPressed(Input.Keys.W))
 	        {
                 camera.zoom += 0.02;
 	        }
-	        if(Gdx.input.isKeyPressed(Input.Keys.D))
+	        if(Gdx.input.isKeyPressed(Input.Keys.S))
 	        {
                 camera.zoom -= 0.02;
 	        }
