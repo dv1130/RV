@@ -12,12 +12,11 @@ import com.badlogic.gdx.graphics.Color;
 
 public class trikotnik implements ApplicationListener 
 {
-        //Spremenljivke
         private Mesh[] mesh;
         private OrthographicCamera camera;
         private float rotationSpeed;
         private int skupno = 0;
-        private float movementIncrement = 0.0005f; //Moment
+        private float movementIncrement = 0.0005f;
         //Github br8394
 
         @Override
@@ -95,7 +94,6 @@ public class trikotnik implements ApplicationListener
             }
             
             Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
-            Gdx.gl10.glAlphaFunc(GL10.GL_GREATER, 0);
             camera.update();
             camera.apply(Gdx.gl10);
             
